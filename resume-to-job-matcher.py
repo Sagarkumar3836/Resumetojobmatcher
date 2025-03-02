@@ -11,9 +11,17 @@ import fitz  # PyMuPDF for PDF processing
 from docx import Document
 import re
 
-# Download necessary NLTK data
-nltk.download("punkt")
-nltk.download("stopwords")
+import nltk
+import os
+
+nltk_data_path = os.path.expanduser('~/nltk_data')
+if not os.path.exists(nltk_data_path + "/tokenizers/punkt"):
+    nltk.download("punkt")
+if not os.path.exists(nltk_data_path + "/corpora/stopwords"):
+    nltk.download("stopwords")
+
+
+
 
 # Load spaCy model
 nlp = spacy.load("en_core_web_sm")
